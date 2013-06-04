@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+
+
+	<bean id="oracle" name="wiseworm" class="com.apress.prospring3.ch4.BookwormOracle"/>
+	
+	<bean id="injectRef" class="com.apress.prospring3.ch4.xml.InjectRef">
+		<property name="oracle">
+			<!-- ref local="oracle" /-->
+			<ref bean="wiseworm"/>
+		</property>
+	</bean>
+
+
+
+
+	
+	<bean id="injectionCollection" class="com.apress.prospring3.ch4.xml.CollectionInjection">
+		<property name="map">
+			<map>
+				<entry key="someValue">
+					<value>Hello World!</value>
+				</entry>
+				<entry key="someBean">
+					<ref local="oracle"/>
+				</entry>
+			</map>
+		</property>
+		<property name="properties">
+			<props>
+				<prop key="firstName">Clarence</prop>
+				<prop key="secondName">Ho</prop>
+			</props>
+		</property>
+		<property name="set">
+			<set>
+				<value>Hello World!</value>
+				<ref local="oracle"/>
+			</set>
+		</property>
+		<property name="list">
+			<list>
+				<value>Hello World!!!!</value>
+				<ref local="oracle"/>
+			</list>
+		</property>
+	</bean>
+</beans>
