@@ -14,7 +14,7 @@ public class XmlConfigWithBeanFactory {
         FileSystemResource resource = new FileSystemResource("src/main/resources/xmlBeanFactory.xml");
 
         reader.loadBeanDefinitions(resource);
-        // Another comment
+        // Another comment - edited
         Oracle oracle = (Oracle)factory.getBean("oracle");
 
         // New comment was added
