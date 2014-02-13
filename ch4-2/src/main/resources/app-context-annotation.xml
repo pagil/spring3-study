@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.1.xsd
+http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<context:annotation-config />
+
+	<context:component-scan base-package="com.apress.prospring3.ch4.annotation" />
+	
+	<bean id="message" class="java.lang.String" c:_0="This is a configurable message, Bad Motherfucker!" />
+	
+	<!-- VEFIMCH: It is very interesting: You cannot @Autowire constructor containing primitive types (int) 
+	     because there is no way to define a constant in app-context.xml.
+	     Therefore, use wrappers for this constructors OR define bean explicitly in app-context.xml. -->
+	<!-- bean id="someValue" class="java.lang.String" c:_0="some value from app-context*.xml" /-->
+	<bean id="someValue" class="java.lang.Integer"  c:_0="1000" />
+	<bean id="constructorConfusionXML" class="com.apress.prospring3.ch4.annotation.ConstructorConfusion">
+		<constructor-arg>
+			<value type="int">5</value>
+		</constructor-arg>
+	</bean>
+</beans>
