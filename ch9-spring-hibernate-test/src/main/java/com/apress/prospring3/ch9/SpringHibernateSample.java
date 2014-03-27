@@ -28,8 +28,8 @@ public class SpringHibernateSample {
 
         // Add new contact
         contact = new Contact();
-        contact.setFirstName("Michae4");
-        contact.setLastName("Jackson4");
+        contact.setFirstName("Michae5");// Change me before running
+        contact.setLastName("Jackson5");// Change me before running
         contact.setBirthDate(new Date());
         ContactTelDetail contactTelDetail = new ContactTelDetail("Home", "1111111111");
         contact.addContactTelDetail(contactTelDetail);
@@ -57,7 +57,7 @@ public class SpringHibernateSample {
         listContacts(contacts);
 
         // Delete contact
-        contact = contactDao.findById(6L);
+        contact = contactDao.findById(10L);// Change me before running
         contactDao.delete(contact);
         contacts = contactDao.findAllWithDetail();
         listContacts(contacts);
