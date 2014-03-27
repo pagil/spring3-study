@@ -42,7 +42,7 @@ public class SpringHibernateSample {
         listContacts(contacts);
 
         // Edit existing contact
-        contact = contactDao.findById(7L);
+        contact = contactDao.findById(7L);// Change me if you like
         contact.setFirstName("Kin Fung");
         Set<ContactTelDetail> contactTelDetails = contact.getContactTelDetails();
         ContactTelDetail toDeleteContcatTelDetail = null;
