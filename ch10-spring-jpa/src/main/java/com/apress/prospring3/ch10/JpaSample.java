@@ -24,7 +24,7 @@ public class JpaSample {
 
         System.out.println();
 
-        Contact contact = contactService.findById(10L);
+        Contact contact = contactService.findById(1L);
         System.out.println(contact);
     }
 
