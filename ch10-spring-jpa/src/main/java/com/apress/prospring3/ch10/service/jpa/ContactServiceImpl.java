@@ -56,8 +56,17 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public Contact save(Contact contact) {
-        // TODO Auto-generated method stub
-        return null;
+        if (contact.getId() == null) {
+            // Insert Contact
+            log.info("Inserting new contact");
+            em.persist(contact);
+        } else {
+            // Update Contact
+            em.merge(contact);
+            log.info("Updating existing contact");
+        }
+        log.info("Contact saved with id: " + contact.getId());
+        return contact;
     }
 
     @Override

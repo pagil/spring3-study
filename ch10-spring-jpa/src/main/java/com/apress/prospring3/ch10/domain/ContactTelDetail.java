@@ -35,6 +35,16 @@ public class ContactTelDetail implements Serializable {
     @JoinColumn(name = "CONTACT_ID")
     private Contact contact;
 
+    public ContactTelDetail() {
+        super();
+    }
+
+    public ContactTelDetail(String telType, String telNumber) {
+        super();
+        this.telType = telType;
+        this.telNumber = telNumber;
+    }
+
     public Long getId() {
         return id;
     }

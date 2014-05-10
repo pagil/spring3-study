@@ -1,5 +1,6 @@
 package com.apress.prospring3.ch10;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.context.support.GenericXmlApplicationContext;
@@ -18,13 +19,23 @@ public class JpaSample {
 
         ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
 
+        // Add new contact
+        Contact contact = new Contact();
+        contact.setFirstName("Jannet");
+        contact.setLastName("Peterson");
+        contact.setBirthDate(new Date());
+        ContactTelDetail contactTelDetail = new ContactTelDetail("Home", "11111111111");
+        contact.addContactTelDetail(contactTelDetail);
+        contactTelDetail = new ContactTelDetail("Mobile", "3333333333333");
+        contact.addContactTelDetail(contactTelDetail);
+        contactService.save(contact);
         // List contacts without details
         List<Contact> contacts = contactService.findAllWithDetail();
         listContactsWithDetail(contacts);
 
         System.out.println();
 
-        Contact contact = contactService.findById(1L);
+        contact = contactService.findById(1L);
         System.out.println(contact);
     }
 
