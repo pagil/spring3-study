@@ -71,8 +71,14 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public void delete(Contact contact) {
-        // TODO Auto-generated method stub
-
+        // This is essential, because you need to get managed contact entity instance.
+        Contact mergeContact = em.merge(contact);
+        em.remove(mergeContact);
+        // If you make this simply like that:
+        // em.remove(contact);
+        // You will get exception: java.lang.IllegalArgumentException: Removing a detached instance
+        // com.apress.prospring3.ch10.domain.Contact#10
+        log.info("Contact with id: " + contact.getId() + " deleted succesfully");
     }
 
 }

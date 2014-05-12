@@ -22,8 +22,8 @@ public class JpaSample {
 
         // Add new contact
         Contact contact = new Contact();
-        contact.setFirstName("Max");
-        contact.setLastName("Anderson");
+        contact.setFirstName("Migel");
+        contact.setLastName("Gomez");
         contact.setBirthDate(new Date());
         ContactTelDetail contactTelDetail = new ContactTelDetail("Home", "11111111111");
         contact.addContactTelDetail(contactTelDetail);
@@ -56,6 +56,12 @@ public class JpaSample {
         }
         contactTelDetails.remove(toDeleteContactTelDetail);
         contactService.save(contact);
+        contacts = contactService.findAllWithDetail();
+        listContactsWithDetail(contacts);
+
+        // Delete contact
+        contact = contactService.findById(10L);
+        contactService.delete(contact);
         contacts = contactService.findAllWithDetail();
         listContactsWithDetail(contacts);
     }
