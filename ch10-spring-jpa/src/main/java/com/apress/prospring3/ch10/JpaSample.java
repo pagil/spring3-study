@@ -20,6 +20,19 @@ public class JpaSample {
 
         ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
 
+        List<Contact> contacts = contactService.findAllByNativeQuery();
+        listContacts(contacts);
+
+        ctx.close();
+    }
+
+    public static void main1(String[] args) {
+        GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
+        ctx.load("classpath:META-INF/spring/app-context.xml");
+        ctx.refresh();
+
+        ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
+
         // Add new contact
         Contact contact = new Contact();
         contact.setFirstName("Migel");

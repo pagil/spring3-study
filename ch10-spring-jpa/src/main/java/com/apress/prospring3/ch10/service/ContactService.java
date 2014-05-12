@@ -23,4 +23,5 @@ public interface ContactService {
 
     // Delete a contact
     public void delete(Contact contact);
+
 }

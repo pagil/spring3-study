@@ -22,7 +22,7 @@ public class ContactServiceImpl implements ContactService {
 
     private Log log = LogFactory.getLog(ContactServiceImpl.class);
 
-    final static String ALL_CONTACT_NATIVE_QUERY = "select id, first_name, last_name, birthdate, version from contact";
+    final static String ALL_CONTACT_NATIVE_QUERY = "select id, first_name, last_name, birth_date, version from contact";
 
     @PersistenceContext(name = "emf")
     private EntityManager em;
@@ -37,7 +37,8 @@ public class ContactServiceImpl implements ContactService {
     @Transactional(readOnly = true)
     @Override
     public List<Contact> findAllByNativeQuery() {
-        return em.createNativeQuery(ALL_CONTACT_NATIVE_QUERY, Contact.class).getResultList();
+        // return em.createNativeQuery(ALL_CONTACT_NATIVE_QUERY, Contact.class).getResultList();
+        return em.createNativeQuery(ALL_CONTACT_NATIVE_QUERY, "contactResult").getResultList();
     }
 
     @Transactional(readOnly = true)
