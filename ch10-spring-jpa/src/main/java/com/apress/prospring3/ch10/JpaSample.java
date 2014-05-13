@@ -20,6 +20,20 @@ public class JpaSample {
 
         ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
 
+        // Find by criteria query
+        List<Contact> contacts = contactService.findByCriteriaQuery(null, "Gomez");
+        listContactsWithDetail(contacts);
+
+        ctx.close();
+    }
+
+    public static void main2(String[] args) {
+        GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
+        ctx.load("classpath:META-INF/spring/app-context.xml");
+        ctx.refresh();
+
+        ContactService contactService = ctx.getBean("jpaContactService", ContactService.class);
+
         List<Contact> contacts = contactService.findAllByNativeQuery();
         listContacts(contacts);
 

@@ -24,4 +24,7 @@ public interface ContactService {
     // Delete a contact
     public void delete(Contact contact);
 
+    // Find contact by criteria query
+    public List<Contact> findByCriteriaQuery(String firstName, String lastName);
+
 }
