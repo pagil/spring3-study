@@ -51,4 +51,7 @@
     
     <jpa:repositories base-package="com.apress.prospring3.ch10.repository" entity-manager-factory-ref="emf" transaction-manager-ref="transactionManager" />
     
+    <bean id="auditorAwareBean" class="com.apress.prospring3.ch10.service.springjpa.auditor.AuditorAwareBean" />
+    
+    <jpa:auditing auditor-aware-ref="auditorAwareBean"/>
 </beans>
