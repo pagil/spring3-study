@@ -15,10 +15,12 @@ import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.envers.Audited;
 import org.joda.time.DateTime;
 import org.springframework.data.domain.Auditable;
 
 @Entity
+@Audited
 @Table(name = "contact_audit")
 public class ContactAudit implements Auditable<String, Long>, Serializable {
 

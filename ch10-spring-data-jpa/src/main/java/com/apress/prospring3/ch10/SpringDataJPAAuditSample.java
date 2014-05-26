@@ -24,8 +24,8 @@ public class SpringDataJPAAuditSample {
         // Add new contact
         System.out.println("Add new contact");
         ContactAudit contact = new ContactAudit();
-        contact.setFirstName("Michael");
-        contact.setLastName("Jackson");
+        contact.setFirstName("John");
+        contact.setLastName("Deer");
         contact.setBirthDate(new Date());
         contactService.save(contact);
         contacts = contactService.findAll();
@@ -33,17 +33,26 @@ public class SpringDataJPAAuditSample {
         System.out.println("====================================");
 
         // Find by id
-        contact = contactService.findById(1L);
-        System.out.println("Contact with id 1: " + contact);
+        contact = contactService.findById(4L);
+        System.out.println("Contact with id 4: " + contact);
         System.out.println("====================================");
 
         // Update contact
         System.out.println("Update contact");
-        contact.setFirstName("Tom");
+        contact.setFirstName("Bill");
         contactService.save(contact);
         contacts = contactService.findAll();
         listContactAudit(contacts);
         System.out.println("====================================");
+
+        // Find audit record by revision
+        ContactAudit oldContact = contactService.findAuditByRevision(4L, 5);
+        System.out.println("Old contact with id 1 and rev 1:" + oldContact);
+        System.out.println("====================================");
+        oldContact = contactService.findAuditByRevision(4L, 6);
+        System.out.println("Old contact with id 1 and rev 2:" + oldContact);
+        System.out.println("====================================");
+
         ctx.close();
     }
 
