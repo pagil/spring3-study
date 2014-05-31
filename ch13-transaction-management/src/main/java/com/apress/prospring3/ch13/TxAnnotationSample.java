@@ -19,9 +19,11 @@ public class TxAnnotationSample {
 
         List<Contact> contacts = contactService.findAll();
 
+        System.out.println("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
         for (Contact contact : contacts) {
             System.out.println(contact);
         }
+        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
 
         ctx.close();
     }
