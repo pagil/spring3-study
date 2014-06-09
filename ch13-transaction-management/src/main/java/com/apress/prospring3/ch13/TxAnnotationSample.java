@@ -1,10 +1,7 @@
 package com.apress.prospring3.ch13;
 
-import java.util.List;
-
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import com.apress.prospring3.ch13.domain.Contact;
 import com.apress.prospring3.ch13.service.ContactService;
 
 public class TxAnnotationSample {
@@ -17,13 +14,20 @@ public class TxAnnotationSample {
 
         ContactService contactService = ctx.getBean("contactService", ContactService.class);
 
-        List<Contact> contacts = contactService.findAll();
+        // List<Contact> contacts = contactService.findAll();
+        //
+        // System.out.println("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        // for (Contact contact : contacts) {
+        // System.out.println(contact);
+        // }
+        // System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
+        //
+        // Contact contact = contactService.findById(1L);
+        // contact.setFirstName("Peter");
+        // contactService.save(contact);
+        // System.out.println("Contact saved succesfully");
 
-        System.out.println("\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-        for (Contact contact : contacts) {
-            System.out.println(contact);
-        }
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
+        System.out.println("Contacts count: " + contactService.countAll());
 
         ctx.close();
     }

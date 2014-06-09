@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.apress.prospring3.ch13.domain.Contact;
@@ -26,22 +27,21 @@ public class ContactServiceImpl implements ContactService {
         return Lists.newArrayList(contactRepository.findAll());
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Contact findById(Long id) {
-        // TODO Auto-generated method stub
-        return null;
+        return contactRepository.findOne(id);
     }
 
     @Override
     public Contact save(Contact contact) {
-        // TODO Auto-generated method stub
-        return null;
+        return contactRepository.save(contact);
     }
 
+    @Transactional(propagation = Propagation.NEVER)
     @Override
     public long countAll() {
-        // TODO Auto-generated method stub
-        return 0;
+        return contactRepository.count();
     }
 
 }
